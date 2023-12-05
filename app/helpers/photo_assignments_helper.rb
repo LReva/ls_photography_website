@@ -1,0 +1,2 @@
+module PhotoAssignmentsHelper
+end

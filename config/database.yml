@@ -2,22 +2,24 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: photo_db
   username: <%= ENV.fetch('DATABASE_USERNAME') %>
   password: <%= ENV.fetch('DATABASE_PASSWORD') %>
-  host: localhost
+  host: <%= ENV.fetch("DB_HOST") %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
 
 development:
   <<: *default
+  database: photo_db_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
+# test:
+#   <<: *default
 
-production:
-  <<: *default
+# production:
+#   <<: *default
+#   database: photo_db_production
+#   username: <%= ENV['PROD_DATABASE_USERNAME'] %>
+#   password: <%= ENV['PROD_DATABASE_PASSWORD'] %>
   
