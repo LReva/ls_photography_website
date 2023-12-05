@@ -3,7 +3,7 @@ class AddPhotosTable < ActiveRecord::Migration[7.0]
     create_table :photos do |t|
       t.string :name 
       t.binary :photo_data
-      t.text :desctiption
+      t.text :description
       t.timestamps
     end
   end
