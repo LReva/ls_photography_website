@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'about', to: 'pages#about'
+  get 'photos', to: 'pages#photos'
+  get 'photos/:id', to: 'pages#photo_view'
+  get 'photos/:category_name', to: 'pages#category_view'
+
   namespace :api do
     namespace :v1 do
       resources :photos
@@ -6,8 +12,5 @@ Rails.application.routes.draw do
       resources :categorized_photos
     end
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
