@@ -1,0 +1,21 @@
+body {
+  margin:0;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-family: 'Dawning of a New Day', cursive;
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 2em;
+  }
+
+p {
+  text-indent: 1%;
+  font-size: 1.5em;
+  text-align: justify;
+}
+  
+#aboutMe-section {
+  margin: 5%;
+}

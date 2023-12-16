@@ -58,7 +58,13 @@ Vagrant.configure("2") do |config|
     sudo gem install rails
     sudo gem install bundler
     sudo npm install -g yarn
+    sudo npm install -g n 
+    sudo n 14
     rails webpacker:install
+    yarn add @babel/plugin-proposal-private-methods
+    yarn add @babel/plugin-proposal-private-property-in-object
+    rails webpacker:install:react
+    yarn add @mui/material @emotion/react @emotion/styled
     source /vagrant/.env
     sudo -u postgres createdb --locale en_US.utf8 --encoding UTF8 --template template0 photo_db_development
     sudo -u postgres createuser -s -w $DATABASE_USERNAME
