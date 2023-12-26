@@ -8,7 +8,7 @@ import ShareIcon from '@mui/icons-material/Share';
 
 const Footer = () => {
     return (
-      <footer style={{backgroundColor: 'black'}}>
+      <footer style={{backgroundColor: 'rgb(0, 15, 14)'}}>
           <BottomNavigation
             showLabels
           >
