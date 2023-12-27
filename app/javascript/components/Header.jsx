@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const pages = ['About', 'All Photos', 'Categories'];
 const categories = []
@@ -28,6 +29,31 @@ const Header = () => {
     const theme = useTheme();
 
     const [anchorElNav, setAnchorElNav] = useState(null);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+  
+    const handleNavigation = (sectionId) => {
+      if (sectionId.page === 'All Photos') {
+        navigate('/photos')
+      }
+      else {
+        if (location.pathname === '/') {
+            const section = document.getElementById(sectionId.page);
+            section.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            navigate('/', { state: { scrollToSection: sectionId.page } });
+            setTimeout(() => {
+                const section = document.getElementById(sectionId.page);
+                console.log(section)
+                console.log(sectionId)
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+           }
+        }
+    };
   
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
@@ -36,6 +62,11 @@ const Header = () => {
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
+
+    const handleCloseAndNav = (sectionID) => {
+        handleCloseNavMenu()
+        handleNavigation(sectionID);
+    }
   
     return (
         <ThemeProvider theme={localTheme}>
@@ -71,7 +102,7 @@ const Header = () => {
                             }}
                             >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu} divider={true}>
+                                <MenuItem key={page} onClick={() => handleCloseAndNav({page})} divider={true}>
                                 <Typography textAlign="center"
                                 sx={{fontFamily: 'Caveat'}}>{page}</Typography>
                                 </MenuItem>
@@ -100,7 +131,7 @@ const Header = () => {
                             {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => handleNavigation({page})}
                                 sx={{ my: 2, 
                                     color: 'white', 
                                     display: 'block', 

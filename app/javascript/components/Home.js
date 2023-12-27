@@ -7,9 +7,13 @@ const Home = () => {
     return (
         <div>
             <PhotoCarousel/>
-            <h2>About</h2>
-            <AboutMe/>
-            <h2>See More!</h2>
+            <section id="About">
+                <h2>About</h2>
+                <AboutMe/>
+            </section>
+            <section id="Categories">
+                <h2>See More!</h2>
+            </section>
         </div>
     );
 };
