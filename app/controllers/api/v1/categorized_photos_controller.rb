@@ -2,8 +2,16 @@ class Api::V1::CategorizedPhotosController < ApplicationController
     before_action :set_categorized_photos, only: [:show]
 
     def index
-        @all_photo_assignments = PhotoAssignment.all
-        render json: @all_photo_assignments
+        @categories_with_photo_example = []
+        all_photo_assignments = PhotoAssignment.all
+        all_photo_assignments_random = all_photo_assignments.group_by(&:photo_category_id).map { |_, group| group.sample }
+        all_photo_assignments_random.each do |photo|
+            photo_in_the_category = Photo.find(photo.photo_id)
+            category = PhotoCategory.find(photo.photo_category_id)
+            category_photo = { :photo => photo_in_the_category, :category => category }
+            @categories_with_photo_example.push(category_photo)
+        end
+        render json: @categories_with_photo_example
     end
 
     def show

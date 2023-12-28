@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'about', to: 'pages#about'
   get 'photos', to: 'pages#photos'
   get 'photos/:id', to: 'pages#photo_view'
   get 'photos/:category_name', to: 'pages#category_view'
