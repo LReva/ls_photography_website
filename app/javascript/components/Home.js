@@ -1,6 +1,7 @@
 import React from 'react';
 import PhotoCarousel from './PhotoCarousel';
 import AboutMe from './AboutMe';
+import CategoriesGrid from './CategoriesGrid';
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             </section>
             <section id="Categories">
                 <h2>See More!</h2>
+                <CategoriesGrid/>
             </section>
         </div>
     );
