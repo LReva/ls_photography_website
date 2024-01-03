@@ -1,7 +1,7 @@
 import React, {useEffect, useState}  from 'react';
 import Stack from '@mui/material/Stack';
-import CategoryBox from './CatergoryBox';
-import all_category_sample_loader from '../categorized_photos';
+import CategoryBox from './CategoryBox.jsx';
+import {all_category_sample_loader} from '../categorized_photos.js';
 
 
 const CategoriesGrid = () => {

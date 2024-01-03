@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -112,8 +113,6 @@ const Header = () => {
                         <Typography
                             variant="h5"
                             noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
                             sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -125,7 +124,7 @@ const Header = () => {
                             textDecoration: 'none',
                             }}
                         >
-                            LS Photography
+                            <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>LS Photography</Link>
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
@@ -148,8 +147,6 @@ const Header = () => {
                         <Typography
                             variant="h4"
                             noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
                             sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -161,7 +158,7 @@ const Header = () => {
                             alignSelf: 'right'
                             }}
                         >
-                            LS Photography
+                          <Link to='/' style={{ textDecoration: 'none', color: 'white'  }}>LS Photography</Link>
                         </Typography>
                     </Toolbar>
                 </Container>

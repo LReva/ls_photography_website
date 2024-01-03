@@ -1,14 +1,14 @@
+require 'routes/constraints/category_constraint'
+
 Rails.application.routes.draw do
   root 'home#index'
-  get 'photos', to: 'pages#photos'
-  get 'photos/:id', to: 'pages#photo_view'
-  get 'photos/:category_name', to: 'pages#category_view'
+  get '/:category_name', to: 'categories#index'
 
   namespace :api do
     namespace :v1 do
       resources :photos
       resources :photo_categories
-      resources :categorized_photos
+      resources :categorized_photos, only: [:index, :show]
     end
   end
 
