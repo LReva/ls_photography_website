@@ -10,12 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { useTheme } from '@mui/material/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const pages = ['About', 'All Photos', 'Categories'];
-const categories = []
+const pages = ['About', 'All Photos', 'Categories', 'Find more'];
 
 const localTheme = createTheme({
     palette: {
@@ -26,8 +24,6 @@ const localTheme = createTheme({
   });
 
 const Header = () => {
-
-    const theme = useTheme();
 
     const [anchorElNav, setAnchorElNav] = useState(null);
 
