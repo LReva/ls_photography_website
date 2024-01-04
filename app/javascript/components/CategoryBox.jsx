@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
 
-const CategoryBox = (photo) => {
+const CategoryBox = ({photo}) => {
     const imagesContext = require.context('images', true, /\.(JPE?G)$/);
 
     function importImage(imageName) {
@@ -20,17 +20,18 @@ const CategoryBox = (photo) => {
       }
 
     return (
-        <Card sx={{ minHeight: '280px', width: 320, borderRadius: '25px', textAlign: 'center'}}>
+        <Card sx={{ minHeight: '280px', width: 320, borderRadius: '25px', textAlign: 'center'}}
+              onClick={()=> window.location.href=`/${photo.category.name}`}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="250"
-                    image={importImage(photo.photo.photo.photo_data)}
-                    alt={photo.photo.category.name}>
+                    image={importImage(photo.photo.photo_data)}
+                    alt={photo.category.name}>
                 </CardMedia>
                 <CardContent sx={{ justifyContent: 'flex-end' }}>
                     <Typography gutterBottom variant="h5" sx={{fontFamily: 'Caveat'}}>
-                    {photo.photo.category.name}
+                    {photo.category.name}
                     </Typography>
                 </CardContent>
             </CardActionArea>

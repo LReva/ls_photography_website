@@ -3,8 +3,6 @@ import { useTheme } from '@mui/material/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -109,19 +107,6 @@ const PhotoCarousel = () => {
               </div>
             ))}
           </AutoPlaySwipeableViews>
-          {/* <Paper
-            square
-            elevation={0}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              height: 50,
-              pl: 2,
-              bgcolor: 'background.default',
-            }}
-          >
-            <Typography>{images[activeStep].description}</Typography>
-          </Paper> */}
           <ThemeProvider theme={localTheme}>
             <MobileStepper
               steps={maxSteps}

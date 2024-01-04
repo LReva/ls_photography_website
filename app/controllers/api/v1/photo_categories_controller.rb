@@ -13,7 +13,7 @@ class Api::V1::PhotoCategoriesController < ApplicationController
     private
 
     def set_photo_category
-        @photo_category = PhotoCategory.find(params[:id])
+        @photo_category = PhotoCategory.find(params[:name])
     end
 
     def photo_params
