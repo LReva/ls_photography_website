@@ -1,4 +1,4 @@
-export default async function all_photo_loader() {
+export async function all_photo_loader() {
   try {
     const response = await fetch("/api/v1/photos");
     if (!response.ok) {
