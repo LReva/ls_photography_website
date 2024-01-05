@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
+import AllPhotosView from './AllPhotosView.jsx';
 import CategoryView from './CategoryView';
 import {active_category_loader} from '../categorized_photos.js'
 
@@ -22,6 +23,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home/>} />
+        <Route exact path="/photos" element={<AllPhotosView/>} />
         {categories.map(category => (
           <Route key={category.name} path={`/${category.name}`} element={<CategoryView category={category}/>} />
         ))}
