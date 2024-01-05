@@ -34,11 +34,13 @@ const Home = () => {
                              sx={{ 
                                     color: 'rgb(0, 15, 14)', 
                                     display: 'block', 
-                                    fontFamily: 'Caveat', 
-                                    fontSize: '1rem', 
+                                    fontFamily: 'Nanum Brush Script, cursive',
+                                    fontWeight: 'bold',
+                                    fontSize: '1.5em', 
                                     margin: '1.4rem',
                                     padding: '6px 20px',
                                     textDecoration: 'underline',
+                                    textTransform: 'none',
                                     '&:hover': {
                                       backgroundColor: 'black',
                                       color: 'white',
@@ -48,11 +50,13 @@ const Home = () => {
                              sx={{ 
                                     color: 'rgb(0, 15, 14)', 
                                     display: 'block', 
-                                    fontFamily: 'Caveat', 
-                                    fontSize: '1rem', 
-                                    margin: '1.4rem', 
+                                    fontFamily: 'Nanum Brush Script, cursive',
+                                    fontWeight: 'bold',
+                                    fontSize: '1.5em', 
+                                    margin: '1.4rem',
                                     padding: '6px 20px',
                                     textDecoration: 'underline',
+                                    textTransform: 'none',
                                     '&:hover': {
                                       backgroundColor: 'black',
                                       color: 'white',
