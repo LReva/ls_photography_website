@@ -19,6 +19,7 @@ const PhotoGrid = ({images, imagesNames}) => {
               src={`${imagesNames[index]}`}
               alt={image.name}
               loading="lazy"
+              onClick={()=> window.location.href=`/photos/${image.id}`}
             />
             <ImageListItemBar
               sx={{fontFamily: 'Caveat'}}
