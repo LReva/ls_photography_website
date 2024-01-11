@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -7,6 +8,7 @@ import { CardActionArea } from '@mui/material';
 
 
 const CategoryBox = ({photo}) => {
+    const navigate = useNavigate();
     const imagesContext = require.context('images', true, /\.(JPE?G)$/);
 
     function importImage(imageName) {
@@ -21,7 +23,7 @@ const CategoryBox = ({photo}) => {
 
     return (
         <Card sx={{ minHeight: '280px', width: 320, borderRadius: '25px', textAlign: 'center'}}
-              onClick={()=> window.location.href=`/${photo.category.name}`}>
+              onClick={()=> navigate(`/${photo.category.name}`)}>
             <CardActionArea>
                 <CardMedia
                     component="img"
