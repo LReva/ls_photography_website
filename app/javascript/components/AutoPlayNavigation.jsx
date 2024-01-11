@@ -4,7 +4,7 @@ import { IconButton, Box } from '@mui/material';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
 
-const AutoPlayNavigation = ({index, photos, style}) => {
+const AutoPlayNavigation = ({index, photos, parentLocation, style}) => {
     const [autoPlayEnabled, setAutoPlayEnabled] = useState(false)
     const navigate = useNavigate();
     const [activeStep, setActiveStep] = useState(index);
@@ -31,14 +31,14 @@ const AutoPlayNavigation = ({index, photos, style}) => {
 
     useEffect(() => {
         if (autoPlayEnabled) {
-            navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep}});
+            navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep, parentLocation: parentLocation}});
         }
     }, [autoPlayEnabled, activeStep, navigate]);
     
     const toggleAutoplay = () => {
         setAutoPlayEnabled(!autoPlayEnabled);
         if (!autoPlayEnabled) {
-          navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep}});
+          navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep, parentLocation: parentLocation}});
         }
       };
       

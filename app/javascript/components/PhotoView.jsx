@@ -12,10 +12,11 @@ const navigate = useNavigate();
 const location = useLocation();
 const photos = location.state.photos
 const index = location.state.index
+const parentLocation = location.state.parentLocation
 const [isFullScreen, setIsFullScreen] = useState(false);
 
 const handleGoBackButton = () => {
-  navigate("/photos")
+  navigate(`${parentLocation}`)
 }
 
   return (
@@ -37,7 +38,7 @@ const handleGoBackButton = () => {
           >
           <FullscreenIcon/>
         </IconButton>
-        <AutoPlayNavigation index={index} photos={photos} />
+        <AutoPlayNavigation index={index} photos={photos} parentLocation={parentLocation}/>
       </Box>
         <img src={photoPath} 
           alt={photo.name} 
@@ -48,7 +49,7 @@ const handleGoBackButton = () => {
           width: '100vw',
           objectFit: 'contain'}} 
         />
-        <BackAndNextNavigation index={index} photos={photos}/>
+        <BackAndNextNavigation index={index} photos={photos} parentLocation={parentLocation}/>
         {isFullScreen && (
           <Box className="fullScreenModal">
             <IconButton
@@ -58,8 +59,8 @@ const handleGoBackButton = () => {
             >
               <FullscreenExitIcon style={{ color: 'white' }} />
             </IconButton>
-            <AutoPlayNavigation index={index} photos={photos} style={{ position: 'absolute', top: 50, right: 20 }}/>
-            <BackAndNextNavigation index={index} photos={photos}/>
+            <AutoPlayNavigation index={index} photos={photos} parentLocation={parentLocation} style={{ position: 'absolute', top: 50, right: 20 }}/>
+            <BackAndNextNavigation index={index} photos={photos} parentLocation={parentLocation}/>
             <img src={photoPath} alt={photo.name} style={{ maxWidth: '100%', maxHeight: '100%' }} />
           </Box>
         )}
