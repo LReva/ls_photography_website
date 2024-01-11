@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { useTheme } from '@mui/material/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -8,7 +8,6 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import {all_photo_loader} from '../photos.js'
 
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -34,37 +33,10 @@ const localTheme = createTheme({
 });
 
 
-const PhotoCarousel = () => {
+const PhotoCarousel = ({photos, imagePaths}) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
-  const [images, setImages] = useState([]);
-  const [imagesNames, setImageNames] = useState([]);
-  const [maxSteps, setMaxSteps] = useState(0)
-  const imagesContext = require.context('images', true, /\.(JPE?G)$/);
-
-  function importImages(imageNames) {
-    const imagesHere = imageNames.map(name => {
-      const imagePath = `./${name}`;
-      try {
-        return imagesContext(imagePath);
-      } catch (e) {
-        console.warn(`Image not found: ${imagePath}`);
-        return null;
-      }
-    });
-    return imagesHere.filter(Boolean);
-  }
-
-  useEffect(() => {
-    const fetchPhotos = async () => {  
-      const result = await all_photo_loader();
-      const importedImages = importImages(result.map(image => image.photo_data))
-      setImageNames(importedImages)
-      setImages(result);
-      setMaxSteps(importedImages.length)
-      }
-      fetchPhotos();
-  }, [])
+  const maxSteps = photos.length
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -78,7 +50,7 @@ const PhotoCarousel = () => {
     setActiveStep(step);
   };
   
-  if (images.length > 0) {
+  if (photos.length > 0) {
      return (
       <div>
         <Box sx={{ height: '90vh', maxWidth: '100%', flexGrow: 1, position: 'relative', overflow: 'hidden'}}>
@@ -88,7 +60,7 @@ const PhotoCarousel = () => {
             onChangeIndex={handleStepChange}
             enableMouseEvents
           >
-            {images.map((step, index) => (
+            {photos.map((step, index) => (
               <div key={step.id}>
                 {Math.abs(activeStep - index) <= 2 ? (
                   <Box
@@ -100,7 +72,7 @@ const PhotoCarousel = () => {
                       width: '100vw',
                       objectFit: 'cover',
                     }}
-                    src={imagesNames[index]}
+                    src={imagePaths[index]}
                     alt={step.name}
                   />
                 ) : null}
@@ -148,4 +120,5 @@ const PhotoCarousel = () => {
     )
   }
 }
+
 export default PhotoCarousel;

@@ -1,19 +1,9 @@
-import React, {useEffect, useState}  from 'react';
+import React from 'react';
 import Stack from '@mui/material/Stack';
 import CategoryBox from './CategoryBox.jsx';
-import {all_category_sample_loader} from '../categorized_photos.js';
 
 
-const CategoriesGrid = () => {
-    const [categories, setCategories] = useState([]);
-  
-    useEffect(() => {
-      const fetchCategorySample = async () => {  
-        const result = await all_category_sample_loader();
-        setCategories(result);
-        }
-        fetchCategorySample();
-    }, [])
+const CategoriesGrid = ({categories}) => {
 
     return (
         <Stack
