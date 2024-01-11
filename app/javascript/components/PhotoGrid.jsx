@@ -1,13 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useTheme, useMediaQuery } from '@mui/material';
 
 
-
 const PhotoGrid = ({images, imagesNames}) => {
     const theme = useTheme();
+    const navigate = useNavigate();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
     const cols = matches ? 3 : 1;
 
@@ -19,7 +20,7 @@ const PhotoGrid = ({images, imagesNames}) => {
               src={`${imagesNames[index]}`}
               alt={image.name}
               loading="lazy"
-              onClick={()=> window.location.href=`/photos/${image.id}`}
+              onClick={() => navigate(`/photos/${image.id}`, {state: {photos: images, index: index}})}
             />
             <ImageListItemBar
               sx={{fontFamily: 'Caveat'}}

@@ -1,17 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IconButton, Box } from '@mui/material';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 
 const BackAndNextNavigation = ({index, photos}) => {
+  const navigate = useNavigate();
     
     const handleBackOnePhoto = () => {
-      window.location.href=`/photos/${photos[index-1].id}`
+      navigate(`/photos/${photos[index-1].id}`, {state: {photos: photos, index: index-1}})
     }
     
     const handleNextOnePhoto = () => {
-      window.location.href=`/photos/${photos[index+1].id}`
+      navigate(`/photos/${photos[index+1].id}`, {state: {photos: photos, index: index+1}})
     }
     
         return (

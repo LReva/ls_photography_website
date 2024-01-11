@@ -11,6 +11,10 @@ const AutoPlayNavigation = ({index, photos, style}) => {
     const photoCount = photos.length
 
     useEffect(() => {
+      setActiveStep(index)
+    }, [index]);
+
+    useEffect(() => {
         let interval;
       
         if (autoPlayEnabled) {
@@ -27,14 +31,14 @@ const AutoPlayNavigation = ({index, photos, style}) => {
 
     useEffect(() => {
         if (autoPlayEnabled) {
-            navigate(`/photos/${photos[activeStep].id}`);
+            navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep}});
         }
     }, [autoPlayEnabled, activeStep, navigate]);
     
     const toggleAutoplay = () => {
         setAutoPlayEnabled(!autoPlayEnabled);
         if (!autoPlayEnabled) {
-          navigate(`/photos/${photos[activeStep].id}`);
+          navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep}});
         }
       };
       

@@ -59,10 +59,7 @@ const App = () => {
           <Route key={index} 
                  path={`/photos/${photo.id}`} 
                  element={<PhotoView photo={photo} 
-                           photoPath={imagePaths[index]} 
-                           index={index} 
-                           photos={photos}
-                           imagePaths={imagePaths}/>} />
+                           photoPath={imagePaths[index]}  />} />
         ))}
       </Routes>
       <Footer />
