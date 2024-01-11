@@ -5,15 +5,15 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 
-const BackAndNextNavigation = ({index, photos}) => {
+const BackAndNextNavigation = ({index, photos, parentLocation}) => {
   const navigate = useNavigate();
     
     const handleBackOnePhoto = () => {
-      navigate(`/photos/${photos[index-1].id}`, {state: {photos: photos, index: index-1}})
+      navigate(`/photos/${photos[index-1].id}`, {state: {photos: photos, index: index-1, parentLocation: parentLocation}})
     }
     
     const handleNextOnePhoto = () => {
-      navigate(`/photos/${photos[index+1].id}`, {state: {photos: photos, index: index+1}})
+      navigate(`/photos/${photos[index+1].id}`, {state: {photos: photos, index: index+1, parentLocation: parentLocation}})
     }
     
         return (

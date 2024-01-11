@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
+import { useLocation } from 'react-router-dom';
 import PhotoGrid from './PhotoGrid';
 import {all_photo_loader} from '../photos.js'
 
 
 const AllPhotosView = () => {
+    const location = useLocation();
+    const currentLocation = location.pathname
     const [images, setImages] = useState([]);
     const [imagesNames, setImageNames] = useState([]);
     const imagesContext = require.context('images', true, /\.(JPE?G)$/);
@@ -33,7 +36,7 @@ const AllPhotosView = () => {
 
     return (
         <div>
-            <PhotoGrid images={images} imagesNames={imagesNames}/>
+            <PhotoGrid images={images} imagesNames={imagesNames} parentLocation={currentLocation}/>
         </div>
     );
 };

@@ -6,7 +6,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useTheme, useMediaQuery } from '@mui/material';
 
 
-const PhotoGrid = ({images, imagesNames}) => {
+const PhotoGrid = ({images, imagesNames, parentLocation}) => {
     const theme = useTheme();
     const navigate = useNavigate();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -20,7 +20,7 @@ const PhotoGrid = ({images, imagesNames}) => {
               src={`${imagesNames[index]}`}
               alt={image.name}
               loading="lazy"
-              onClick={() => navigate(`/photos/${image.id}`, {state: {photos: images, index: index}})}
+              onClick={() => navigate(`/photos/${image.id}`, {state: {photos: images, index: index, parentLocation: parentLocation}})}
             />
             <ImageListItemBar
               sx={{fontFamily: 'Caveat'}}
