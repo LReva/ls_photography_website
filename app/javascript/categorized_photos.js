@@ -41,11 +41,3 @@ export async function all_category_photos_loader(category_id) {
     throw error;
   }
 }
-
-
-    // Fetch a single category by ID (replace :id with an actual category ID) - to be adjusted
-    // fetch("/api/v1/categorized_photos/:id")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data); // Handle the data as needed
-    //   });

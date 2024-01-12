@@ -6,7 +6,7 @@ import Home from './Home';
 import AllPhotosView from './AllPhotosView.jsx';
 import CategoryView from './CategoryView';
 import PhotoView from './PhotoView.jsx';
-import {active_category_loader} from '../categorized_photos.js'
+import {all_category_sample_loader} from '../categorized_photos.js';
 import { all_photo_loader } from '../photos.js';
 
 const App = () => {
@@ -29,11 +29,11 @@ const App = () => {
   }
 
   useEffect(() => {
-    const fetchCategories = async () => {  
-      const result = await active_category_loader();
+    const fetchCategorySample = async () => {  
+      const result = await all_category_sample_loader();
       setCategories(result);
       }
-      fetchCategories();
+      fetchCategorySample();
   }, [])
 
   useEffect(() => { 
@@ -50,10 +50,10 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path="/photos" element={<AllPhotosView/>} />
+        <Route exact path="/" element={<Home photos={photos} imagePaths={imagePaths} categories={categories}/>} />
+        <Route exact path="/photos" element={<AllPhotosView photos={photos} imagePaths={imagePaths}/>} />
         {categories.map(category => (
-          <Route key={category.name} path={`/${category.name}`} element={<CategoryView category={category}/>} />
+          <Route key={category.category.name} path={`/${category.category.name}`} element={<CategoryView category={category.category}/>} />
         ))}
         {photos.map((photo, index) => (
           <Route key={index} 
