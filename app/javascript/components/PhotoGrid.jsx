@@ -24,7 +24,7 @@ const PhotoGrid = ({images, imagesNames, parentLocation}) => {
             />
             <ImageListItemBar
               sx={{fontFamily: 'Caveat'}}
-              title={image.name}
+              title={image.description}
               position="below"
             />
           </ImageListItem>
