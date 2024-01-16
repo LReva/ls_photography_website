@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useTheme } from '@mui/material/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import PhotoCarouselBox from './PhotoCarouselBox.jsx';
 import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -32,8 +33,9 @@ const localTheme = createTheme({
   }, 
 });
 
+const photoCarouselBoxStyle = {height: '90vh', objectFit: 'cover'}
 
-const PhotoCarousel = ({photos, imagePaths}) => {
+const PhotoCarousel = ({photos}) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = photos.length
@@ -63,17 +65,7 @@ const PhotoCarousel = ({photos, imagePaths}) => {
             {photos.map((step, index) => (
               <div key={step.id}>
                 {Math.abs(activeStep - index) <= 2 ? (
-                  <Box
-                    component="img"
-                    sx={{
-                      height: '90vh',
-                      display: 'block',
-                      overflow: 'hidden',
-                      width: '100vw',
-                      objectFit: 'cover',
-                    }}
-                    src={imagePaths[index]}
-                    alt={step.name}
+                  <PhotoCarouselBox photo={step} style={photoCarouselBoxStyle}
                   />
                 ) : null}
               </div>

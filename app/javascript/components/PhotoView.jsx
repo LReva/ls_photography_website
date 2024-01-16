@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { IconButton, Button, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -6,14 +6,22 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import BackAndNextNavigation from './BackAndNextNavigation';
 import AutoPlayNavigation from './AutoPlayNavigation';
+import {importImage} from '../photoLoader.js'
 
-const PhotoView = ({photo, photoPath }) => {
+const PhotoView = ({photo }) => {
 const navigate = useNavigate();
 const location = useLocation();
 const photos = location.state.photos
 const index = location.state.index
 const parentLocation = location.state.parentLocation
 const [isFullScreen, setIsFullScreen] = useState(false);
+const [imagePath, setImagePath] = useState([]);
+
+useEffect(() => { 
+  const importedImage = importImage(photo.photo_data)
+  setImagePath(importedImage) 
+}, [photo])
+
 
 const handleGoBackButton = () => {
   navigate(`${parentLocation}`)
@@ -40,7 +48,7 @@ const handleGoBackButton = () => {
         </IconButton>
         <AutoPlayNavigation index={index} photos={photos} parentLocation={parentLocation}/>
       </Box>
-        <img src={photoPath} 
+        <img src={imagePath} 
           alt={photo.name} 
           style={{                     
           height: '80vh',
@@ -61,7 +69,7 @@ const handleGoBackButton = () => {
             </IconButton>
             <AutoPlayNavigation index={index} photos={photos} parentLocation={parentLocation} style={{ position: 'absolute', top: 50, right: 20 }}/>
             <BackAndNextNavigation index={index} photos={photos} parentLocation={parentLocation}/>
-            <img src={photoPath} alt={photo.name} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+            <img src={imagePath} alt={photo.name} style={{ maxWidth: '100%', maxHeight: '100%' }} />
           </Box>
         )}
   </Box>

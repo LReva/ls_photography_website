@@ -10,38 +10,23 @@ import {all_category_sample_loader} from '../categorized_photos.js';
 import { all_photo_loader } from '../photos.js';
 
 const App = () => {
+  const [categorySamplePhotos, setCategorySamplePhotos] = useState([]);
   const [categories, setCategories] = useState([]);
   const [photos, setPhotos] = useState([]);
-  const [imagePaths, setImagePaths] = useState([]);
-  const imagesContext = require.context('images', true, /\.(JPE?G)$/);
-
-  function importImages(imageNames) {
-    const imagesHere = imageNames.map(name => {
-      const imagePath = `./${name}`;
-      try {
-        return imagesContext(imagePath);
-      } catch (e) {
-        console.warn(`Image not found: ${imagePath}`);
-        return null;
-      }
-    });
-    return imagesHere.filter(Boolean);
-  }
 
   useEffect(() => {
-    const fetchCategorySample = async () => {  
+    const fetchCategorySamplePhotos = async () => {  
       const result = await all_category_sample_loader();
-      setCategories(result);
+      setCategorySamplePhotos(result);
+      setCategories(result.map(categorySamplePhoto => categorySamplePhoto.category))
       }
-      fetchCategorySample();
+      fetchCategorySamplePhotos();
   }, [])
 
   useEffect(() => { 
     const fetchPhotos = async () => {  
       const result = await all_photo_loader();
       setPhotos(result);
-      const importedImages = importImages(result.map(image => image.photo_data))
-      setImagePaths(importedImages)
       }
       fetchPhotos();
   }, [])
@@ -50,16 +35,15 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home photos={photos} imagePaths={imagePaths} categories={categories}/>} />
-        <Route exact path="/photos" element={<AllPhotosView photos={photos} imagePaths={imagePaths}/>} />
-        {categories.map(category => (
-          <Route key={category.category.name} path={`/${category.category.name}`} element={<CategoryView category={category.category}/>} />
+        <Route exact path="/" element={<Home photos={photos} categorySamplePhotos={categorySamplePhotos}/>} />
+        <Route exact path="/photos" element={<AllPhotosView photos={photos} />} />
+        {categories.map((category) => (
+          <Route key={category.name} path={`/${category.name}`} element={<CategoryView category={category}/>} />
         ))}
         {photos.map((photo, index) => (
           <Route key={index} 
                  path={`/photos/${photo.id}`} 
-                 element={<PhotoView photo={photo} 
-                           photoPath={imagePaths[index]}  />} />
+                 element={<PhotoView photo={photo}  />} />
         ))}
       </Routes>
       <Footer />
