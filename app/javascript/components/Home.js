@@ -13,7 +13,7 @@ const Home = ({photos, categorySamplePhotos}) => {
   
     return (
         <div>
-            <PhotoCarousel photos={photos}/>
+            <PhotoCarousel allPhotos={photos}/>
             <section id="About">
                 <h2>About</h2>
                 <AboutMe/>

@@ -33,11 +33,13 @@ const localTheme = createTheme({
   }, 
 });
 
-const photoCarouselBoxStyle = {height: '90vh', objectFit: 'cover'}
+const photoCarouselBoxStyle = {height: '90vh', objectFit: 'contain'}
 
-const PhotoCarousel = ({photos}) => {
+const PhotoCarousel = ({allPhotos}) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
+  const homePageCarouselIds = [1,2,5,6,8,10,11,17,18,19,23,24,25,27]
+  const photos = allPhotos.filter(photo => homePageCarouselIds.includes(photo.id))
   const maxSteps = photos.length
 
   const handleNext = () => {
@@ -54,7 +56,7 @@ const PhotoCarousel = ({photos}) => {
   
   if (photos.length > 0) {
      return (
-      <div>
+      <div style={{backgroundColor:'black'}}>
         <Box sx={{ height: '90vh', maxWidth: '100%', flexGrow: 1, position: 'relative', overflow: 'hidden'}}>
           <AutoPlaySwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
