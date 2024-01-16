@@ -6,21 +6,21 @@ import AboutMe from './AboutMe';
 import CategoriesGrid from './CategoriesGrid';
 
 
-const Home = ({photos, imagePaths, categories}) => {
+const Home = ({photos, categorySamplePhotos}) => {
     const handleNavigation = (url) => {
         window.location.href = url; 
       };
   
     return (
         <div>
-            <PhotoCarousel photos={photos} imagePaths={imagePaths}/>
+            <PhotoCarousel photos={photos}/>
             <section id="About">
                 <h2>About</h2>
                 <AboutMe/>
             </section>
             <section id="Categories">
                 <h2>Categories</h2>
-                <CategoriesGrid categories={categories}/>
+                <CategoriesGrid categorySamplePhotos={categorySamplePhotos}/>
             </section>
             <section id="Find more">
                 <h2>Find more!</h2>

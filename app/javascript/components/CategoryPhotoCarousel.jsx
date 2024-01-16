@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useTheme } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import PhotoCarouselBox from './PhotoCarouselBox.jsx';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -33,8 +34,9 @@ const localTheme = createTheme({
   }, 
 });
 
+const photoCarouselBoxStyle = {height: '70vh', objectFit: 'scale-down'}
 
-const CategoryPhotoCarousel = ({images, imagesNames, maxSteps}) => {
+const CategoryPhotoCarousel = ({images, maxSteps}) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -86,18 +88,7 @@ const CategoryPhotoCarousel = ({images, imagesNames, maxSteps}) => {
                     {images.map((step, index) => (
                     <div key={step.id}>
                         {Math.abs(activeStep - index) <= 2 ? (
-                        <Box
-                            component="img"
-                            sx={{
-                            height: '70vh',
-                            display: 'block',
-                            overflow: 'hidden',
-                            width: '100%',
-                            objectFit: 'scale-down',
-                            margin: 'auto'
-                            }}
-                            src={imagesNames[index]}
-                            alt={step.name}
+                        <PhotoCarouselBox photo={step} style={photoCarouselBoxStyle}
                         />
                         ) : null}
                     </div>
@@ -139,4 +130,5 @@ const CategoryPhotoCarousel = ({images, imagesNames, maxSteps}) => {
     )
   }
 }
+
 export default CategoryPhotoCarousel;

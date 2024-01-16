@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import CategoryBox from './CategoryBox.jsx';
 
 
-const CategoriesGrid = ({categories}) => {
+const CategoriesGrid = ({categorySamplePhotos}) => {
 
     return (
         <Stack
@@ -15,8 +15,8 @@ const CategoriesGrid = ({categories}) => {
                  marginBottom: '4rem',
                  marginTop: '3rem'}}
         >
-            {categories.map((category, index) => (
-                <CategoryBox key={index} photo={category}/>
+            {categorySamplePhotos.map((categorySamplePhoto, index) => (
+                <CategoryBox key={index} categorySamplePhoto={categorySamplePhoto}/>
             ))}
         </Stack>
     );
