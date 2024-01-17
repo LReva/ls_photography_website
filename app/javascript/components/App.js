@@ -33,20 +33,24 @@ const App = () => {
 
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<Home photos={photos} categorySamplePhotos={categorySamplePhotos}/>} />
-        <Route exact path="/photos" element={<AllPhotosView photos={photos} />} />
-        {categories.map((category) => (
-          <Route key={category.name} path={`/${category.name}`} element={<CategoryView category={category}/>} />
-        ))}
-        {photos.map((photo, index) => (
-          <Route key={index} 
-                 path={`/photos/${photo.id}`} 
-                 element={<PhotoView photo={photo}  />} />
-        ))}
-      </Routes>
-      <Footer />
+      <div id="page-container">
+        <div id="content-wrap">
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<Home photos={photos} categorySamplePhotos={categorySamplePhotos}/>} />
+            <Route exact path="/photos" element={<AllPhotosView photos={photos} />} />
+            {categories.map((category) => (
+              <Route key={category.name} path={`/${category.name}`} element={<CategoryView category={category}/>} />
+            ))}
+            {photos.map((photo, index) => (
+              <Route key={index} 
+                    path={`/photos/${photo.id}`} 
+                    element={<PhotoView photo={photo}  />} />
+            ))}
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 };
