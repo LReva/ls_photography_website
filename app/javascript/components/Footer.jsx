@@ -143,7 +143,7 @@ const Footer = () => {
               </DialogActions>
             </Dialog>
           <Box>
-            <p style={{fontSize:'0.8em', textAlign: 'center', color: 'white'}}>© All Rights Reserved</p>
+            <p style={{fontSize:'0.8em', textAlign: 'center', color: 'white', marginBottom: 0}}>© All Rights Reserved</p>
           </Box>
       </footer>
     );
