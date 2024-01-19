@@ -32,7 +32,13 @@ const Header = () => {
   
     const handleNavigation = (sectionId) => {
       if (sectionId.page === 'All Photos') {
-        navigate('/photos')
+        navigate('/photos', { state: { scrollToSection: sectionId.page } });
+        setTimeout(() => {
+            const section = document.getElementById(sectionId.page);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth'});
+            }
+          }, 100);
       }
       else {
         if (location.pathname === '/') {
@@ -42,8 +48,6 @@ const Header = () => {
             navigate('/', { state: { scrollToSection: sectionId.page } });
             setTimeout(() => {
                 const section = document.getElementById(sectionId.page);
-                console.log(section)
-                console.log(sectionId)
                 if (section) {
                     section.scrollIntoView({ behavior: 'smooth' });
                 }
