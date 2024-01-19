@@ -50,3 +50,8 @@
 #content-wrap {
   flex: 1;
 }
+
+section {
+  scroll-padding-top: 100px;
+  scroll-margin-top: 100px; 
+}

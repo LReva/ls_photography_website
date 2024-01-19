@@ -8,9 +8,11 @@ const AllPhotosView = ({photos}) => {
     const currentLocation = location.pathname
 
     return (
-        <div>
-            <PhotoGrid images={photos} parentLocation={currentLocation}/>
-        </div>
+        <section id='All Photos'>
+            <div>
+                <PhotoGrid images={photos} parentLocation={currentLocation}/>
+            </div>
+        </section>
     );
 };
 
