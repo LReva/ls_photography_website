@@ -9,11 +9,11 @@ const BackAndNextNavigation = ({index, photos, parentLocation}) => {
   const navigate = useNavigate();
     
     const handleBackOnePhoto = () => {
-      navigate(`/photos/${photos[index-1].id}`, {state: {photos: photos, index: index-1, parentLocation: parentLocation}})
+      navigate(`/photos/${photos[index-1].id}`, {state: { parentLocation: parentLocation}})
     }
     
     const handleNextOnePhoto = () => {
-      navigate(`/photos/${photos[index+1].id}`, {state: {photos: photos, index: index+1, parentLocation: parentLocation}})
+      navigate(`/photos/${photos[index+1].id}`, {state: {parentLocation: parentLocation}})
     }
     
         return (

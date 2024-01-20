@@ -30,7 +30,6 @@ export async function active_category_loader() {
 export async function all_category_photos_loader(category_id) {
   try {
     const response = await fetch(`/api/v1/categorized_photos/${category_id}`);
-    console.log(response)
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

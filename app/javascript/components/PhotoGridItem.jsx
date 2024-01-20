@@ -5,7 +5,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import {importImage} from '../photoLoader.js'
 
 
-const PhotoGridItem = ({index, images, image, parentLocation}) => {
+const PhotoGridItem = ({index, image, parentLocation}) => {
     const navigate = useNavigate();
     const [imagePath, setImagePath] = useState([]);
 
@@ -20,7 +20,7 @@ const PhotoGridItem = ({index, images, image, parentLocation}) => {
               src={imagePath}
               alt={image.name}
               loading="lazy"
-              onClick={() => navigate(`/photos/${image.id}`, {state: {photos: images, index: index, parentLocation: parentLocation}})}
+              onClick={() => navigate(`/photos/${image.id}`, {state: { parentLocation: parentLocation}})}
             />
             <ImageListItemBar
               sx={{fontFamily: 'Caveat'}}
