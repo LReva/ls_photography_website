@@ -45,7 +45,7 @@ const App = () => {
             {photos.map((photo, index) => (
               <Route key={index} 
                     path={`/photos/${photo.id}`} 
-                    element={<PhotoView photo={photo}  />} />
+                    element={<PhotoView photo={photo} photos={photos} index={index}/>} />
             ))}
           </Routes>
         </div>

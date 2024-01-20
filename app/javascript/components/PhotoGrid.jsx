@@ -12,7 +12,7 @@ const PhotoGrid = ({images, parentLocation}) => {
     return (
         <ImageList sx={{ margin: '5vh',}} variant="masonry" cols={cols} gap={8}>
         {images.map((image, index) => (
-          <PhotoGridItem key={index} index={index} images ={images} image={image} parentLocation={parentLocation}/>
+          <PhotoGridItem key={index} index={index} image={image} parentLocation={parentLocation}/>
         ))}
       </ImageList>
     );

@@ -8,24 +8,27 @@ import BackAndNextNavigation from './BackAndNextNavigation';
 import AutoPlayNavigation from './AutoPlayNavigation';
 import {importImage} from '../photoLoader.js'
 
-const PhotoView = ({photo }) => {
-const navigate = useNavigate();
-const location = useLocation();
-const photos = location.state.photos
-const index = location.state.index
-const parentLocation = location.state.parentLocation
-const [isFullScreen, setIsFullScreen] = useState(false);
-const [imagePath, setImagePath] = useState([]);
+const PhotoView = ({photo, photos, index }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [parentLocation, setParentLocation] = useState('/photos')
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [imagePath, setImagePath] = useState([]);
 
-useEffect(() => { 
-  const importedImage = importImage(photo.photo_data)
-  setImagePath(importedImage) 
-}, [photo])
+  useEffect(() => { 
+    const parentLocation = (location.state ? location.state.parentLocation : "/photos")
+    setParentLocation(parentLocation) 
+  }, [photo])
+
+  useEffect(() => { 
+    const importedImage = importImage(photo.photo_data)
+    setImagePath(importedImage) 
+  }, [photo])
 
 
-const handleGoBackButton = () => {
-  navigate(`${parentLocation}`)
-}
+  const handleGoBackButton = () => {
+    navigate(`${parentLocation}`)
+  }
 
   return (
     <Box sx={{position:'relative'}}>

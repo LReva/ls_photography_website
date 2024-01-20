@@ -31,14 +31,14 @@ const AutoPlayNavigation = ({index, photos, parentLocation, style}) => {
 
     useEffect(() => {
         if (autoPlayEnabled) {
-            navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep, parentLocation: parentLocation}});
+            navigate(`/photos/${photos[activeStep].id}`, {state: {parentLocation: parentLocation}});
         }
     }, [autoPlayEnabled, activeStep, navigate]);
     
     const toggleAutoplay = () => {
         setAutoPlayEnabled(!autoPlayEnabled);
         if (!autoPlayEnabled) {
-          navigate(`/photos/${photos[activeStep].id}`, {state: {photos: photos, index: activeStep, parentLocation: parentLocation}});
+          navigate(`/photos/${photos[activeStep].id}`, {state: {parentLocation: parentLocation}});
         }
       };
       
