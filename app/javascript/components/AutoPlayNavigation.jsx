@@ -3,6 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { IconButton, Box } from '@mui/material';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const localTheme = createTheme({
+  palette: {
+    primary: {
+      main: 'rgb(128,128,128)'
+    },
+  }, 
+});
 
 const AutoPlayNavigation = ({index, photos, parentLocation, style}) => {
     const [autoPlayEnabled, setAutoPlayEnabled] = useState(false)
@@ -43,27 +52,26 @@ const AutoPlayNavigation = ({index, photos, parentLocation, style}) => {
       };
       
         return (
-
+          <ThemeProvider theme={localTheme}>
             <Box  style={style}>
                   { !autoPlayEnabled &&
                     <IconButton
-                      color="inherit"
+                      color="primary"
                       onClick={toggleAutoplay}
-                    //   style={{ position: 'absolute', top: 50 }}
                     >
                       <PlayCircleFilledWhiteIcon  />
                     </IconButton >           
                   }
                   { autoPlayEnabled &&
                     <IconButton
-                      color="inherit"
+                      color="primary"
                       onClick={toggleAutoplay}
-                    //   style={{ position: 'absolute', top: 50 }}
                     >
                       <StopCircleIcon  />
                     </IconButton>
                   }
-        </Box>
+            </Box>
+        </ThemeProvider>
         );
     };
 
