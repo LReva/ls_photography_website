@@ -25,9 +25,36 @@ const PhotoView = ({photo, photos, index }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
+  const [hideNavigationButtons, setHideNavigationButtons] = useState(false)
   const [parentLocation, setParentLocation] = useState('/photos')
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [imagePath, setImagePath] = useState([]);
+  const [autoPlayEnabled, setAutoPlayEnabled] = useState(false)
+  const [activeStep, setActiveStep] = useState(index);
+  const photoCount = photos.length
+
+  useEffect(() => {
+    setActiveStep(index)
+  }, [index]);
+
+  useEffect(() => {
+      let interval;
+      if (autoPlayEnabled) {
+        interval = setInterval(() => {
+          setActiveStep((prevIndex) => {
+            const nextIndex = prevIndex === photoCount-1 ? 0 : prevIndex + 1;
+            return nextIndex;
+          });
+        }, 4000);
+      }
+      return () => clearInterval(interval);
+    }, [autoPlayEnabled, photoCount]);
+
+  useEffect(() => {
+      if (autoPlayEnabled) {
+          navigate(`/photos/${photos[activeStep].id}`, {state: {parentLocation: parentLocation}});
+      }
+  }, [autoPlayEnabled, activeStep, navigate]);
 
   useEffect(() => { 
     const parentLocation = (location.state ? location.state.parentLocation : "/photos")
@@ -63,6 +90,14 @@ const PhotoView = ({photo, photos, index }) => {
     trackMouse: true // Track mouse swipes on non-touch devices
   });
 
+  const toggleAutoplay = () => {
+    setAutoPlayEnabled(!autoPlayEnabled);
+    setHideNavigationButtons(!hideNavigationButtons)
+    if (!autoPlayEnabled) {
+      navigate(`/photos/${photos[activeStep].id}`, {state: {parentLocation: parentLocation}});
+    }
+  };
+
   return (
     <ThemeProvider theme={localTheme}>
       <Box sx={{position:'relative'}}>
@@ -83,7 +118,8 @@ const PhotoView = ({photo, photos, index }) => {
             >
             <FullscreenIcon/>
           </IconButton>
-          <AutoPlayNavigation index={index} photos={photos} parentLocation={parentLocation}/>
+          <AutoPlayNavigation autoPlayEnabled={autoPlayEnabled} 
+                              toggleAutoplay={toggleAutoplay}/>
         </Box>
         <Box sx={{display: 'flex',
                             flexDirection: 'row',
@@ -92,7 +128,10 @@ const PhotoView = ({photo, photos, index }) => {
             sx ={{display: {xs: 'none', md: 'flex'}}}
             size="large" 
             onClick={handleBackOnePhoto} 
-            disabled={index === 0}>
+            disabled={index === 0 || hideNavigationButtons}
+            style={{
+              visibility: hideNavigationButtons ? 'hidden' : 'visible',
+            }}>
             {theme.direction === 'rtl' ? (
                 <KeyboardArrowRight />
             ) : (
@@ -113,7 +152,10 @@ const PhotoView = ({photo, photos, index }) => {
             sx ={{display: {xs: 'none', md: 'flex'}}}
             size="large" 
             onClick={handleNextOnePhoto} 
-            disabled={index === 0}>
+            disabled={index === 0 || hideNavigationButtons}
+            style={{
+              visibility: hideNavigationButtons ? 'hidden' : 'visible',
+            }}>
             {theme.direction === 'rtl' ? (
                 <KeyboardArrowLeft />
             ) : (
@@ -130,8 +172,10 @@ const PhotoView = ({photo, photos, index }) => {
               >
                 <FullscreenExitIcon style={{ color: 'white' }} />
               </IconButton>
-              <AutoPlayNavigation index={index} photos={photos} parentLocation={parentLocation} style={{ position: 'absolute', top: 50, right: 20 }}/>
-              <BackAndNextNavigation index={index} photos={photos} parentLocation={parentLocation}/>
+              <AutoPlayNavigation autoPlayEnabled={autoPlayEnabled} 
+                              toggleAutoplay={toggleAutoplay}
+                              style={{ position: 'absolute', top: 50, right: 20 }}/>
+            <BackAndNextNavigation index={index} photos={photos} parentLocation={parentLocation} hideNavigationButtons={hideNavigationButtons}/>
               <img 
                   src={imagePath}
                   {...handlers}

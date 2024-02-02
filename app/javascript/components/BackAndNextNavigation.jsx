@@ -6,7 +6,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 
-const BackAndNextNavigation = ({index, photos, parentLocation}) => {
+const BackAndNextNavigation = ({index, photos, parentLocation, hideNavigationButtons}) => {
   const theme = useTheme();
   const navigate = useNavigate();
     
@@ -30,14 +30,14 @@ const BackAndNextNavigation = ({index, photos, parentLocation}) => {
               width: '10%', 
               maxWidth: '300px', 
           }}>
-              <IconButton size="medium" onClick= {handleBackOnePhoto} style={{ color: 'white', flex: 1}} disabled={index === 0} >
+              <IconButton size="medium" onClick= {handleBackOnePhoto} style={{ color: 'white', flex: 1, visibility: hideNavigationButtons ? 'hidden' : 'visible'}} disabled={index === 0 || hideNavigationButtons} >
               {theme.direction === 'rtl' ? (
                 <KeyboardArrowRight />
             ) : (
                 <KeyboardArrowLeft />
             )}
               </IconButton>
-              <IconButton size="medium" onClick={handleNextOnePhoto} style={{ color: 'white', flex: 1}} disabled={index === photos.length - 1}>
+              <IconButton size="medium" onClick={handleNextOnePhoto} style={{ color: 'white', flex: 1, visibility: hideNavigationButtons ? 'hidden' : 'visible'}} disabled={index === photos.length - 1 || hideNavigationButtons}>
               {theme.direction === 'rtl' ? (
                 <KeyboardArrowLeft />
             ) : (
