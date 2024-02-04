@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import {importImages} from '../photoLoader.js'
+import {contextMenuDisabled} from './helpers.jsx'
 
 
 const CategoryBox = ({categorySamplePhoto}) => {
@@ -25,6 +26,7 @@ const CategoryBox = ({categorySamplePhoto}) => {
                     component="img"
                     height="250"
                     image={imagePath[0]}
+                    onContextMenu={contextMenuDisabled}
                     alt={categorySamplePhoto.category.name}>
                 </CardMedia>
                 <CardContent sx={{ justifyContent: 'flex-end' }}>

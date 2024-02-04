@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import PhotoGrid from './PhotoGrid';
-import {useScrollToTop} from './scrollToTop.jsx'
+import {useScrollToTop} from '../helpers.jsx'
 
 const AllPhotosView = ({photos}) => {
     const location = useLocation();

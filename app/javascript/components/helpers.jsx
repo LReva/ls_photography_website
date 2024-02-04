@@ -7,3 +7,7 @@ export const useScrollToTop = () => {
         }, 50);
       }, []);
 };
+
+export const contextMenuDisabled = (event) => {
+    event.preventDefault();
+};
