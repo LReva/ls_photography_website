@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import {importImage} from '../photoLoader.js'
+import {contextMenuDisabled} from './helpers.jsx'
 
 
 const PhotoGridItem = ({index, image, parentLocation}) => {
@@ -18,6 +19,7 @@ const PhotoGridItem = ({index, image, parentLocation}) => {
           <ImageListItem key={index}>
             <img
               src={imagePath}
+              onContextMenu={contextMenuDisabled}
               alt={image.name}
               loading="lazy"
               onClick={() => navigate(`/photos/${image.id}`, {state: { parentLocation: parentLocation}})}

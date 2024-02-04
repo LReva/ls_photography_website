@@ -12,7 +12,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useSwipeable } from 'react-swipeable';
 import {importImage} from '../photoLoader.js'
-import {useScrollToTop} from './scrollToTop.jsx'
+import {useScrollToTop, contextMenuDisabled} from './helpers.jsx'
 
 const localTheme = createTheme({
   palette: {
@@ -143,6 +143,7 @@ const PhotoView = ({photo, photos, index }) => {
           </Button>
           <img src={imagePath} 
             {...handlers}
+            onContextMenu={contextMenuDisabled}
             alt={photo.name} 
             style={{                     
             height: '80vh',
@@ -183,6 +184,7 @@ const PhotoView = ({photo, photos, index }) => {
                   src={imagePath}
                   {...handlers}
                   alt={photo.name}
+                  onContextMenu={contextMenuDisabled}
                   style={{ maxWidth: '100%', 
                            maxHeight: '100%' }} />
             </Box>
