@@ -12,6 +12,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useSwipeable } from 'react-swipeable';
 import {importImage} from '../photoLoader.js'
+import {useScrollToTop} from './scrollToTop.jsx'
 
 const localTheme = createTheme({
   palette: {
@@ -32,6 +33,8 @@ const PhotoView = ({photo, photos, index }) => {
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false)
   const [activeStep, setActiveStep] = useState(index);
   const photoCount = photos.length
+
+  useScrollToTop()
 
   useEffect(() => {
     setActiveStep(index)

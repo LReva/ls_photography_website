@@ -26,19 +26,12 @@ const localTheme = createTheme({
 const Header = () => {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
-
     const location = useLocation();
     const navigate = useNavigate();
   
     const handleNavigation = (sectionId) => {
       if (sectionId.page === 'All Photos') {
-        navigate('/photos', { state: { scrollToSection: sectionId.page } });
-        setTimeout(() => {
-            const section = document.getElementById(sectionId.page);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth'});
-            }
-          }, 100);
+        navigate('/photos');
       }
       else {
         if (location.pathname === '/') {
