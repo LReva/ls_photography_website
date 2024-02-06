@@ -98,7 +98,11 @@ const Header = () => {
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={() => handleCloseAndNav({page})} divider={true}>
                                 <Typography textAlign="center"
-                                sx={{fontFamily: 'Caveat'}}>{page}</Typography>
+                                sx={{fontFamily: 'Caveat', fontSize: {
+                                    xs: '1.5rem',  
+                                    sm: '2rem',  
+                                  }
+                                  }}>{page}</Typography>
                                 </MenuItem>
                             ))}
                             </Menu>
@@ -112,6 +116,10 @@ const Header = () => {
                             flexGrow: 1,
                             fontFamily: 'Caveat',
                             fontWeight: 700,
+                            fontSize: {
+                                xs: '1.2rem',    
+                                sm: '2rem',  
+                              },
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
@@ -128,7 +136,7 @@ const Header = () => {
                                     color: 'white', 
                                     display: 'block', 
                                     fontFamily: 'Caveat', 
-                                    fontSize: '1.4rem', 
+                                    fontSize: '1.5vw', 
                                     letterSpacing: '.3rem',
                                     marginRight: '1.4rem', 
                                     fontWeight: 600}}
