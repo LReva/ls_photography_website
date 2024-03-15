@@ -9,11 +9,10 @@ const CategoriesGrid = ({categorySamplePhotos}) => {
         <Stack
             direction={{ xs: 'column', sm: 'row' }}
             justifyContent="center"
-            alignItems="center"
-            spacing={8}
-            sx={{flexWrap: 'wrap',
-                 marginBottom: '4rem',
-                 marginTop: '3rem'}}
+            alignItems= "center"
+            useFlexGap
+            spacing={{ xs: 1, sm: 2, md: 3 }}
+            sx={{flexWrap: 'wrap'}}
         >
             {categorySamplePhotos.map((categorySamplePhoto, index) => (
                 <CategoryBox key={index} categorySamplePhoto={categorySamplePhoto}/>
