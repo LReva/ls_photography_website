@@ -12,7 +12,7 @@ const CategoriesGrid = ({categorySamplePhotos}) => {
             alignItems= "center"
             useFlexGap
             spacing={{ xs: 1, sm: 2, md: 3 }}
-            sx={{flexWrap: 'wrap'}}
+            flexWrap= 'wrap'
         >
             {categorySamplePhotos.map((categorySamplePhoto, index) => (
                 <CategoryBox key={index} categorySamplePhoto={categorySamplePhoto}/>

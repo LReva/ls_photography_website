@@ -11,7 +11,7 @@ const AllPhotosView = ({photos}) => {
     return (
         <section id='All Photos'>
             <div>
-                <PhotoGrid images={photos} parentLocation={currentLocation}/>
+                <PhotoGrid photos={photos} parentLocation={currentLocation}/>
             </div>
         </section>
     );

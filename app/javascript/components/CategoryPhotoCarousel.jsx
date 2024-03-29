@@ -36,7 +36,7 @@ const localTheme = createTheme({
 
 const photoCarouselBoxStyle = {height: '70vh', objectFit: 'scale-down'}
 
-const CategoryPhotoCarousel = ({images, maxSteps}) => {
+const CategoryPhotoCarousel = ({photos, maxSteps}) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -52,7 +52,7 @@ const CategoryPhotoCarousel = ({images, maxSteps}) => {
     setActiveStep(step);
   };
   
-  if (images.length > 0) {
+  if (photos.length > 0) {
      return (
         <ThemeProvider theme={localTheme}>
             <div>
@@ -85,7 +85,7 @@ const CategoryPhotoCarousel = ({images, maxSteps}) => {
                     enableMouseEvents
                     interval={6000}
                 >
-                    {images.map((step, index) => (
+                    {photos.map((step, index) => (
                     <div key={step.id}>
                         {Math.abs(activeStep - index) <= 2 ? (
                         <PhotoCarouselBox photo={step} style={photoCarouselBoxStyle}
@@ -122,7 +122,7 @@ const CategoryPhotoCarousel = ({images, maxSteps}) => {
                         textIndent: 0,
                         fontFamily: 'Caveat',
                         fontSize: '1.65em'
-                    }}>{images[activeStep].description}</Typography>
+                    }}>{photos[activeStep].description}</Typography>
                 </Paper>
                 </Box>
             </div>

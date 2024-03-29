@@ -6,27 +6,27 @@ import {importImage} from '../photoLoader.js'
 import {contextMenuDisabled} from './helpers.jsx'
 
 
-const PhotoGridItem = ({index, image, parentLocation}) => {
+const PhotoGridItem = ({index, photo, parentLocation}) => {
     const navigate = useNavigate();
     const [imagePath, setImagePath] = useState([]);
 
     useEffect(() => { 
-      const importedImage = importImage(image.photo_data)
+      const importedImage = importImage(photo.photo_data)
       setImagePath(importedImage) 
-    }, [image])
+    }, [photo])
 
     return (
           <ImageListItem key={index}>
             <img
               src={imagePath}
               onContextMenu={contextMenuDisabled}
-              alt={image.name}
+              alt={photo.name}
               loading="lazy"
-              onClick={() => navigate(`/photos/${image.id}`, {state: { parentLocation: parentLocation}})}
+              onClick={() => navigate(`/photos/${photo.id}`, {state: { parentLocation: parentLocation}})}
             />
             <ImageListItemBar
               sx={{fontFamily: 'Caveat'}}
-              title={image.description}
+              title={photo.description}
               position="below"
             />
           </ImageListItem>
