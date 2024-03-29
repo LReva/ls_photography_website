@@ -4,15 +4,15 @@ import { useTheme, useMediaQuery } from '@mui/material';
 import PhotoGridItem from './PhotoGridItem.jsx';
 
 
-const PhotoGrid = ({images, parentLocation}) => {
+const PhotoGrid = ({photos, parentLocation}) => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
     const cols = matches ? 3 : 1;
 
     return (
         <ImageList sx={{ margin: '5vh',}} variant="masonry" cols={cols} gap={8}>
-        {images.map((image, index) => (
-          <PhotoGridItem key={index} index={index} image={image} parentLocation={parentLocation}/>
+        {photos.map((photo, index) => (
+          <PhotoGridItem key={index} index={index} photo={photo} parentLocation={parentLocation}/>
         ))}
       </ImageList>
     );

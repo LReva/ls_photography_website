@@ -39,32 +39,36 @@ const PhotoCarousel = ({allPhotos}) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const homePageCarouselIds = [1,2,5,6,8,10,11,17,18,19,23,24,25,27]
-  const photos = allPhotos.filter(photo => homePageCarouselIds.includes(photo.id))
-  const maxSteps = photos.length
+  const carouselPhotos = allPhotos.filter(photo => homePageCarouselIds.includes(photo.id))
+  const maxSteps = carouselPhotos.length
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((step) => step + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep((step) => step - 1);
   };
 
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
   
-  if (photos.length > 0) {
+  if (carouselPhotos.length > 0) {
      return (
       <div style={{backgroundColor:'black'}}>
-        <Box sx={{ height: '90vh', maxWidth: '100%', flexGrow: 1, position: 'relative', overflow: 'hidden'}}>
+        <Box sx={{ height: '90vh', 
+                   maxWidth: '100%', 
+                   flexGrow: 1, 
+                   position: 'relative', 
+                   overflow: 'hidden'}}>
           <AutoPlaySwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
             index={activeStep}
             onChangeIndex={handleStepChange}
             enableMouseEvents
           >
-            {photos.map((step, index) => (
+            {carouselPhotos.map((step, index) => (
               <div key={step.id}>
                 {Math.abs(activeStep - index) <= 2 ? (
                   <PhotoCarouselBox photo={step} style={photoCarouselBoxStyle}
@@ -98,7 +102,11 @@ const PhotoCarousel = ({allPhotos}) => {
                 </Button>
               }
               backButton={
-                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                <Button 
+                  size="small" 
+                  onClick={handleBack} 
+                  disabled={activeStep === 0}
+                >
                   {theme.direction === 'rtl' ? (
                     <KeyboardArrowRight />
                   ) : (

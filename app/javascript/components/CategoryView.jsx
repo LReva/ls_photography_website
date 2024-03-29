@@ -8,13 +8,13 @@ import {all_category_photos_loader} from '../categorized_photos.js'
 const CategoryView = ({category}) => {
     const location = useLocation();
     const currentLocation = location.pathname
-    const [images, setImages] = useState([]);
+    const [photos, setPhotos] = useState([]);
     const [maxSteps, setMaxSteps] = useState(0)
   
     useEffect(() => {
       const fetchCategoryPhotos = async (category_id) => {
         const result = await all_category_photos_loader(category_id);
-        setImages(result);
+        setPhotos(result);
         setMaxSteps(result.length)
         }
         fetchCategoryPhotos(category.id);
@@ -22,10 +22,10 @@ const CategoryView = ({category}) => {
 
     return (
         <div>
-            <CategoryPhotoCarousel images={images} maxSteps={maxSteps}/>
+            <CategoryPhotoCarousel photos={photos} maxSteps={maxSteps}/>
             <hr/>
             <h1> See the beauty of {category.name}</h1>
-            <PhotoGrid images={images} parentLocation={currentLocation}/>
+            <PhotoGrid photos={photos} parentLocation={currentLocation}/>
         </div>
     );
 };

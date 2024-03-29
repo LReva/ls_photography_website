@@ -5,16 +5,16 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import {importImages} from '../photoLoader.js'
+import {importImage} from '../photoLoader.js'
 import {contextMenuDisabled} from './helpers.jsx'
 
 
 const CategoryBox = ({categorySamplePhoto}) => {
     const navigate = useNavigate();
-    const [imagePath, setImagePath] = useState([]);
+    const [imagePath, setImagePath] = useState();
   
     useEffect(() => { 
-      const importedImage = importImages([categorySamplePhoto.photo.photo_data])
+      const importedImage = importImage(categorySamplePhoto.photo.photo_data)
       setImagePath(importedImage)
     }, [categorySamplePhoto])
 
@@ -25,7 +25,7 @@ const CategoryBox = ({categorySamplePhoto}) => {
                 <CardMedia
                     component="img"
                     height="250"
-                    image={imagePath[0]}
+                    image={imagePath}
                     onContextMenu={contextMenuDisabled}
                     alt={categorySamplePhoto.category.name}>
                 </CardMedia>

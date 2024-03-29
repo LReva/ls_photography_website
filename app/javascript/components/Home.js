@@ -4,12 +4,10 @@ import Box from '@mui/material/Box';
 import PhotoCarousel from './PhotoCarousel';
 import AboutMe from './AboutMe';
 import CategoriesGrid from './CategoriesGrid';
+import ButtonLink from './ButtonLink';
 
 
 const Home = ({photos, categorySamplePhotos}) => {
-    const handleNavigation = (url) => {
-        window.location.href = url; 
-      };
   
     return (
         <div>
@@ -30,38 +28,8 @@ const Home = ({photos, categorySamplePhotos}) => {
                 <p>Whether you're seeking inspiration, contemplating purchasing, or simply wish to lose yourself in the beauty of nature, these additional platforms offer an expansive array of our works. Just click on the links provided below and let your journey through our lens continue!</p>
 
                 <Box sx={{display:'flex', justifyContent: 'center', flexDirection: { xs: 'column', sm: 'row' }, margin: '1em', alignItems: 'center'}}>
-                    <Button  
-                             sx={{ 
-                                    color: 'rgb(0, 15, 14)', 
-                                    display: 'block', 
-                                    fontFamily: 'Nanum Brush Script, cursive',
-                                    fontWeight: 'bold',
-                                    fontSize: '1.5em', 
-                                    margin: '1.4rem',
-                                    padding: '6px 20px',
-                                    textDecoration: 'underline',
-                                    textTransform: 'none',
-                                    '&:hover': {
-                                      backgroundColor: 'black',
-                                      color: 'white',
-                                    }}}
-                             onClick={() => handleNavigation("https://www.shutterstock.com/g/Lena+Scott")}>Shutterstock Portfolio</Button>
-                    <Button  
-                             sx={{ 
-                                    color: 'rgb(0, 15, 14)', 
-                                    display: 'block', 
-                                    fontFamily: 'Nanum Brush Script, cursive',
-                                    fontWeight: 'bold',
-                                    fontSize: '1.5em', 
-                                    margin: '1.4rem',
-                                    padding: '6px 20px',
-                                    textDecoration: 'underline',
-                                    textTransform: 'none',
-                                    '&:hover': {
-                                      backgroundColor: 'black',
-                                      color: 'white',
-                                    }}}
-                            onClick={() => handleNavigation("https://stock.adobe.com/contributor/211711355/Lena%20Scott")}>Adobe Stock Portfolio</Button>
+                    <ButtonLink url="https://www.shutterstock.com/g/Lena+Scott" buttonName="Shutterstock Portfolio"/>
+                    <ButtonLink url="https://stock.adobe.com/contributor/211711355/Lena%20Scott" buttonName="Adobe Stock Portfolio"/>
                 </Box>
             </section>
         </div>
