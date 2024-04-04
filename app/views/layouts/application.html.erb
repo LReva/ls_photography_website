@@ -6,7 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= favicon_pack_tag 'favicon.png' %>
+    <%= favicon_pack_tag 'favicon-16x16.png' %>
+    <%= favicon_pack_tag 'favicon-32x32.png' %>
+    <%= favicon_pack_tag 'favicon.ico' %>
+    <%= favicon_pack_tag 'apple-touch-icon.png' %>
+    <%= favicon_pack_tag 'android-chrome-192x192.png' %>
+    <%= favicon_pack_tag 'android-chrome-512x512.png' %>
+
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Caveat&family=Dawning+of+a+New+Day&family=Nanum+Brush+Script&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dawning+of+a+New+Day&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>

@@ -10,4 +10,4 @@ Rails.application.config.assets.version = "1.0"
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w( favicon.png )
+Rails.application.config.assets.precompile += %w( favicon-16x16.png favicon-32x32.png favicon.ico apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png)
