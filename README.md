@@ -2,11 +2,11 @@
 
 LS Photography
 
-LS Photography is a personal photography portfolio, a showcase of my journey and passion for capturing moments through the lens. This repository contains the source code for a personal photography portfolio web application built with a Ruby on Rails backend, a React frontend utilizing Material-UI (MUI) for styling, and PostgreSQL as the database.
+LS Photography is a personal photography portfolio that showcases my journey and passion for capturing moments through the lens. This repository contains the source code for a personal photography portfolio web application built with a Ruby on Rails backend, a React frontend utilizing Material-UI (MUI) for styling, and PostgreSQL as the database.
 
 ## Screenshots
 
-Here are some screenshots of the LS Photography application:
+Here are some screenshots of the LS Photography website:
 
 [Home Page]
 ![Screenshot from 2024-11-21 06-47-00](https://github.com/user-attachments/assets/de8c816b-2706-42c4-a075-e949f22e6b95)
@@ -17,7 +17,7 @@ Here are some screenshots of the LS Photography application:
 ![Screenshot from 2024-11-21 07-42-22](https://github.com/user-attachments/assets/ca1be951-1a04-4e0e-a3ba-30393f70a09b)
 ![Screenshot from 2024-11-21 07-42-33](https://github.com/user-attachments/assets/0dc9ba34-8fd4-4375-b52c-3636f2a0a15e)
 
-*Browse through the category page with a selected category photos.*
+*Browse through the category page with selected category photos.*
 
 [Photo View]
 
@@ -27,5 +27,9 @@ Here are some screenshots of the LS Photography application:
 
 *View a single photo with the ability to view in full screen and run an autoplay.*
 
-License
+##Website preview
+
+https://github.com/user-attachments/assets/1c478b0d-4159-4f04-b9db-05966eb152a5
+
+##License
 This project is licensed under the MIT License. See the LICENSE file for details.
