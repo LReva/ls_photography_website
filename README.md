@@ -25,11 +25,11 @@ Here are some screenshots of the LS Photography website:
 
 ![Screenshot from 2024-11-21 09-18-24](https://github.com/user-attachments/assets/a67dc007-e97d-4d73-b91a-29da120599ba)
 
-*View a single photo with the ability to view in full screen and run an autoplay.*
+*View a single photo with the ability to view it on full screen and run an autoplay.*
 
-##Website preview
+## Website preview
 
-https://github.com/user-attachments/assets/1c478b0d-4159-4f04-b9db-05966eb152a5
+https://github.com/user-attachments/assets/b4259f12-4939-4039-9a6c-b57c3c1ddf03
 
-##License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.
